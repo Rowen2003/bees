@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnjdkb8gvwb2j"]
+
+[ext_resource type="PackedScene" uid="uid://bae6fsfen3uoh" path="res://scenes/player.tscn" id="1_xdiwi"]
+[ext_resource type="Script" path="res://scripts/PlayerController.gd" id="2_4sptc"]
+[ext_resource type="Script" path="res://scripts/CameraController.gd" id="2_qawmk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h1hgn"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_xdiwi")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216786, 0, 0)
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("2_4sptc")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.3712, -2.29121)
+current = true
+script = ExtResource("2_qawmk")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.819152, 0.573576, 0, -0.573576, -0.819152, 0, 3.04099, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.49199)
+mesh = SubResource("CylinderMesh_h1hgn")
